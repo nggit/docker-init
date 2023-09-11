@@ -13,10 +13,14 @@ jobs:
     strategy:
       matrix:
         include:
+          - name: systemd-debian:bookworm
+            file: systemd-debian/bookworm/Dockerfile
+            platforms: linux/amd64, linux/arm64
+            tags: nggit/systemd-debian:bookworm, nggit/systemd-debian:latest
           - name: systemd-debian:bullseye
             file: systemd-debian/bullseye/Dockerfile
             platforms: linux/amd64, linux/arm64
-            tags: nggit/systemd-debian:bullseye, nggit/systemd-debian:latest
+            tags: nggit/systemd-debian:bullseye
           - name: systemd-debian:buster
             file: systemd-debian/buster/Dockerfile
             platforms: linux/amd64, linux/arm64
