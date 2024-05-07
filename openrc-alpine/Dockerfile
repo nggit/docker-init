@@ -29,7 +29,7 @@ RUN sed -i 's/^#*AllowTcpForwarding [a-z]*/AllowTcpForwarding yes/' /etc/ssh/ssh
     sed -i 's/^#*ClientAliveCountMax [0-9]*/ClientAliveCountMax 720/' /etc/ssh/sshd_config
 
 # fix hostname: sethostname: Operation not permitted
-# sed -i 's/hostname $opts/#&/' /etc/init.d/hostname
+RUN sed -i 's/hostname $opts/#&/' /etc/init.d/hostname
 
 # enable services at startup
 RUN rc-update add sshd
