@@ -1,0 +1,25 @@
+version: "3.3" # optional since v1.27.0
+
+services:
+  openrc_alpine_10022:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: openrc_alpine
+    container_name: openrc_alpine_10022
+    restart: unless-stopped
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /tmp/run10022:/run
+    ports:
+      - "10022:22"
+    network_mode: bridge
+# or use a custom bridge network instead with `docker network create mynetwork`
+#    networks:
+#      - mynetwork
+#networks:
+#  mynetwork:
+#    external:
+#      true
